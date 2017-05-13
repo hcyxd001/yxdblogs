@@ -1,0 +1,97 @@
+<!-- base.html -->
+<!-- 
+
+    设计一个base.html的主要模板，在此base.html中导入header.html和footer.html,等于让header.html和footer.html
+    分开设计。我们主要显示的文件index.html和post.html，则引用extends指令继承base.html，以保持网页风格的一致性
+    
+    header.html == 网站中每一个网页共享的标题元素，通常放置网站Logo的地方
+
+    footer.html == 网站中每一个网页共享的页尾，用来放置版权声明，或者其他参考信息
+
+    base.html == 网页的基础模板，提供网站的主要设计，和外观风格
+
+    index.html == 范例网页的首页
+
+    post.html == 显示单片文章的网页
+    
+
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='static/js/jquery-1.12.4.min.js'> </script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    {% block script %}
+    {% endblock %}
+   
+</head>
+<body>
+
+    <div class='container-fluid'>
+    {% include 'header.html' %}
+    <div class='row'>
+
+        <div class='col-sm-4 col-md-4'>
+
+            <div class='panel panel-default'>
+
+                <div class='panel-heading'>
+                    <h3>
+                        MENU
+                    </h3>
+                </div>
+                <div class='panel-body'>
+                    <div class='list-group'>
+                        
+                        <a href="javascript:;" class='list-group-item' id='mysql'>MySql</a>
+                        <a href="javascript:;" class='list-group-item' id='redis'>Redis</a>
+                        <a href="javascript:;" class='list-group-item' id='python2'>Python2</a>
+                        <a href="javascript:;" class='list-group-item' id='linux'>Linux</a>
+                        <a href="javascript:;" class='list-group-item' id='mac'>Mac</a>
+                        <a href="javascript:;" class='list-group-item' id='exploit'>Exploit-tool</a>
+                        
+                    </div>  
+                   <!-- <script type='text/javascript' src="http://feedjit.com/serve/?vv=1515&amp;tft=3&amp;dd=0&amp;wid=&amp;pid=0&amp;proid=0&amp;bc=FFFFFF&amp;tc=000000&amp;brd1=012B6B&amp;lnk=135D9E&amp;hc=FFFFFF&amp;hfc=2853A8&amp;btn=C99700&amp;ww=190&amp;wne=6&amp;srefs=0"></script><noscript><a href="http://feedjit.com/">Live Traffic Stats</a></noscript> -->
+                </div>
+                </div>
+                </div>
+                <div class='col-sm-8 col-md-8'>
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            {% block headmessage %}
+                            {% endblock %}
+                        </div>
+                         <div class='panel-body'>
+                            {% block content %}
+                             {% endblock %}
+                        </div>
+                        <div class='panel-footer'>
+                            {% include 'footer.html' %}
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+</body>
+</html>
